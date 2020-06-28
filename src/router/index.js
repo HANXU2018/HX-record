@@ -88,7 +88,7 @@ export const constantRoutes = [
       {
         path: 'score',
         name: 'score',
-        component: () => import('@/views/aboutme/introduction/index'),
+        component: () => import('@/views/aboutme/score/index'),
         meta: { title: '考试成绩', icon: 'el-icon-user-solid' }
       },
       {
