@@ -1,5 +1,6 @@
 <template>
   <div class="navbar">
+
     <hamburger :is-active="sidebar.opened" class="hamburger-container" @toggleClick="toggleSideBar" />
 
     <breadcrumb class="breadcrumb-container" />
@@ -57,6 +58,7 @@ export default {
     }
   }
 }
+
 </script>
 
 <style lang="scss" scoped>
