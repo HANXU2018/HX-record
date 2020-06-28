@@ -49,9 +49,9 @@ export const constantRoutes = [
     redirect: '/dashboard',
     children: [{
       path: 'dashboard',
-      name: 'Dashboard',
+      name: '仪表盘',
       component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      meta: { title: '仪表盘', icon: 'dashboard' }
     }]
   },
 
@@ -150,12 +150,142 @@ export const constantRoutes = [
   },
 
   {
+    path: '/aboutme',
+    component: Layout,
+    redirect: '/aboutme/introduction',
+    name: 'aboutme',
+    meta: { title: '关于我', icon: 'el-icon-user' },
+    children: [
+      {
+        path: 'introduction',
+        name: 'introduction',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '个人介绍', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'studyexperience',
+        name: 'studyexperience',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '学习经历', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'workexperience',
+        name: 'workexperience',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '工作经历', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'prize',
+        name: 'prize',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '获奖证书', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'score',
+        name: 'score',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '考试成绩', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'contact',
+        name: 'contact',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '联系方式', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'milestone',
+        name: 'milestone',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '里程碑', icon: 'el-icon-user-solid' }
+      }
+    ]
+  },
+
+  {
+    path: '/skill',
+    component: Layout,
+    redirect: '/skill/TechnologyStack',
+    name: 'recreation',
+    meta: { title: '专业技能', icon: 'el-icon-user' },
+    children: [
+      {
+        path: 'TechnologyStack',
+        name: 'TechnologyStack',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '技术栈', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'ojrecord',
+        name: 'ojrecord',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '刷题记录', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'mooc',
+        name: 'mooc',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '慕课学习', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'book',
+        name: 'book',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '专业书籍', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'project',
+        name: 'project',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '个人项目', icon: 'el-icon-user-solid' }
+      }
+    ]
+  },
+  {
+    path: '/recreation',
+    component: Layout,
+    redirect: '/recreation/book',
+    name: 'recreation',
+    meta: { title: '娱乐休闲', icon: 'el-icon-user' },
+    children: [
+      {
+        path: 'book',
+        name: 'book',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '阅读书籍', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'music',
+        name: 'music',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '音乐歌单', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'movie',
+        name: 'movie',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '电影电视剧', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'game',
+        name: 'game',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '游戏', icon: 'el-icon-user-solid' }
+      },
+      {
+        path: 'footprint',
+        name: 'footprint',
+        component: () => import('@/views/aboutme/introduction/index'),
+        meta: { title: '足迹', icon: 'el-icon-user-solid' }
+      }
+    ]
+  },
+  {
     path: 'external-link',
     component: Layout,
     children: [
       {
-        path: 'https://panjiachen.github.io/vue-element-admin-site/#/',
-        meta: { title: 'External Link', icon: 'link' }
+        path: 'https://HANXU2018.github.io/',
+        meta: { title: 'GitHub', icon: 'link' }
       }
     ]
   },
