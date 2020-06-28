@@ -38,6 +38,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 import Hamburger from '@/components/Hamburger'
 
 export default {
+
   components: {
     Breadcrumb,
     Hamburger
@@ -55,7 +56,18 @@ export default {
     async logout() {
       await this.$store.dispatch('user/logout')
       this.$router.push(`/login?redirect=${this.$route.fullPath}`)
+    },
+    showWelcome(){
+      this.$notify({
+        title: '欢迎访问 韩旭 的个人简历 页面',
+        message: '更新时间2020年6月28日17:19:36',
+        type: 'success',
+        duration: 3000
+      });
     }
+  },
+  mounted() {
+    this.showWelcome()
   }
 }
 

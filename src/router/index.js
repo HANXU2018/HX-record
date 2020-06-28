@@ -70,7 +70,7 @@ export const constantRoutes = [
       {
         path: 'studyexperience',
         name: 'studyexperience',
-        component: () => import('@/views/aboutme/introduction/index'),
+        component: () => import('@/views/aboutme/studyexperience/index'),
         meta: { title: '学习经历', icon: 'el-icon-user-solid' }
       },
       {
