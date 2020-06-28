@@ -8,8 +8,8 @@
           </div>
           <el-card v-for="course in courses">
             <el-row>
-              <el-col :span="7"><span>{{ course.name }}</span></el-col>
-              <el-col :span="17"><el-progress :text-inside="true" :stroke-width="16" :percentage="course.number" :format="format" status="status" /></el-col>
+              <el-col :span="9"><span>{{ course.name }}</span></el-col>
+              <el-col :span="15"><el-progress :text-inside="true" :stroke-width="19" :percentage="course.number" :format="format" v-bind:status="statu(course.number)" /></el-col>
             </el-row>
           </el-card>
         </el-card>
@@ -47,10 +47,19 @@ export default {
     return {
       courses: [
         { name: '高等数学', number: 100 },
-        { name: '高等', number: 91 },
-        { name: '数学', number: 62 },
-        { name: '高数学', number: 53 },
-        { name: '等数学', number: 84 }
+        { name: '大学英语1', number: 96 },
+        { name: '大学英语2', number: 90 },
+        { name: '大学英语3', number: 80 },
+        { name: '大学英语4', number: 70 },
+        { name: '大学英语5', number: 60 },
+        { name: '大学英语6', number: 50 },
+        { name: '高等数学', number: 55 },
+        { name: '大学英语1', number: 66 },
+        { name: '大学英语2', number: 80 },
+        { name: '大学英语3', number: 90 },
+        { name: '大学英语4', number: 92 },
+        { name: '大学英语5', number: 95 },
+        { name: '大学英语6', number: 100 }
       ],
       activities: [
         { timestamp: '2018/09-2019-01', content: '高等数学 线性代数 计算机导论 大学英语一 大学体育一 大学语文 军事理论', semester: '大一上学期' },
@@ -89,7 +98,7 @@ export default {
   },
   methods: {
     format(percentage) {
-      console.log(percentage)
+      // console.log(percentage)
       if (percentage === 100) {
         return '满分100|【绩点5.0】'
       } else if (percentage >= 95) {
@@ -100,22 +109,19 @@ export default {
         return `${percentage}分|【需重修】`
       }
     },
-    status() {
-      return '"success"'
+
+    statu(percentage) {
+      console.log(percentage)
+      if (percentage < 60) {
+        return 'exception'
+      } else if (percentage <= 75) {
+        return 'warning'
+      } else if (percentage >= 95) {
+        return 'success'
+      } else {
+        return ''
+      }
     }
-    // eslint-disable-next-line vue/no-dupe-keys
-  //   status(percentage) {
-  //     // eslint-disable-next-line no-unreachable
-  //     if (percentage < 60) {
-  //       return 'exception'
-  //     } else if (percentage <= 75) {
-  //       return 'warning'
-  //     } else if (percentage >= 95) {
-  //       return 'success'
-  //     } else {
-  //       return ''
-  //     }
-  //   }
   }
 }
 </script>
