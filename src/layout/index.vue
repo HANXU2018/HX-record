@@ -8,20 +8,19 @@
       </div>
       <app-main />
     </div>
-
-    <el-backtop target=".page-component__scroll .el-scrollbar__wrap" :bottom="100">
+    <el-backtop>
       <div
         style="{
         height: 100%;
         width: 100%;
-        background-color: #f2f5f6;
-        box-shadow: 0 0 6px rgba(0,0,0, .12);
+        background-color: rgba(0,0,0,0);
+        box-shadow: 0 0 6px rgba(97,250,255,0);
         text-align: center;
         line-height: 40px;
         color: #1989fa;
       }"
       >
-        UP
+        <i class="el-icon-s-promotion"></i>
       </div>
     </el-backtop>
   </div>

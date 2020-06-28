@@ -94,7 +94,7 @@ export const constantRoutes = [
       {
         path: 'contact',
         name: 'contact',
-        component: () => import('@/views/aboutme/introduction/index'),
+        component: () => import('@/views/aboutme/contact/index'),
         meta: { title: '联系方式', icon: 'el-icon-user-solid' }
       },
       {
