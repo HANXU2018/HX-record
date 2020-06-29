@@ -65,43 +65,43 @@ export const constantRoutes = [
         path: 'introduction',
         name: 'introduction',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '个人介绍', icon: 'el-icon-user-solid' }
+        meta: { title: '个人介绍', icon: 'el-icon-postcard' }
       },
       {
         path: 'studyexperience',
         name: 'studyexperience',
         component: () => import('@/views/aboutme/studyexperience/index'),
-        meta: { title: '学习经历', icon: 'el-icon-user-solid' }
+        meta: { title: '学习经历', icon: 'el-icon-reading' }
       },
       {
         path: 'workexperience',
         name: 'workexperience',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '工作经历', icon: 'el-icon-user-solid' }
+        meta: { title: '工作经历', icon: 'el-icon-suitcase' }
       },
       {
         path: 'prize',
         name: 'prize',
-        component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '获奖证书', icon: 'el-icon-user-solid' }
+        component: () => import('@/views/aboutme/prize/index'),
+        meta: { title: '获奖证书', icon: 'el-icon-trophy' }
       },
       {
         path: 'score',
         name: 'score',
         component: () => import('@/views/aboutme/score/index'),
-        meta: { title: '考试成绩', icon: 'el-icon-user-solid' }
+        meta: { title: '考试成绩', icon: 'el-icon-data-line' }
       },
       {
         path: 'contact',
         name: 'contact',
         component: () => import('@/views/aboutme/contact/index'),
-        meta: { title: '联系方式', icon: 'el-icon-user-solid' }
+        meta: { title: '联系方式', icon: 'el-icon-connection' }
       },
       {
         path: 'milestone',
         name: 'milestone',
-        component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '里程碑', icon: 'el-icon-user-solid' }
+        component: () => import('@/views/aboutme/milestone/index'),
+        meta: { title: '里程碑', icon: 'el-icon-position' }
       }
     ]
   },
@@ -111,37 +111,37 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/skill/TechnologyStack',
     name: 'recreation',
-    meta: { title: '专业技能', icon: 'el-icon-user' },
+    meta: { title: '专业技能', icon: 'el-icon-cpu' },
     children: [
       {
         path: 'TechnologyStack',
         name: 'TechnologyStack',
-        component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '技术栈', icon: 'el-icon-user-solid' }
+        component: () => import('@/views/skill/TechnologyStack/index'),
+        meta: { title: '技术栈', icon: 'el-icon-coffee-cup' }
       },
       {
         path: 'ojrecord',
         name: 'ojrecord',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '刷题记录', icon: 'el-icon-user-solid' }
+        meta: { title: '刷题记录', icon: 'el-icon-knife-fork' }
       },
       {
         path: 'mooc',
         name: 'mooc',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '慕课学习', icon: 'el-icon-user-solid' }
+        meta: { title: '慕课学习', icon: 'el-icon-edit' }
       },
       {
         path: 'book',
         name: 'book',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '专业书籍', icon: 'el-icon-user-solid' }
+        meta: { title: '专业书籍', icon: 'el-icon-notebook-1' }
       },
       {
         path: 'project',
         name: 'project',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '个人项目', icon: 'el-icon-user-solid' }
+        meta: { title: '个人项目', icon: 'el-icon-bicycle' }
       }
     ]
   },
@@ -150,37 +150,37 @@ export const constantRoutes = [
     component: Layout,
     redirect: '/recreation/book',
     name: 'recreation',
-    meta: { title: '娱乐休闲', icon: 'el-icon-user' },
+    meta: { title: '娱乐休闲', icon: 'el-icon-magic-stick' },
     children: [
       {
         path: 'book',
         name: 'book',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '阅读书籍', icon: 'el-icon-user-solid' }
+        meta: { title: '阅读书籍', icon: 'el-icon-notebook-2' }
       },
       {
         path: 'music',
         name: 'music',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '音乐歌单', icon: 'el-icon-user-solid' }
+        meta: { title: '音乐歌单', icon: 'el-icon-headset' }
       },
       {
         path: 'movie',
         name: 'movie',
-        component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '电影电视剧', icon: 'el-icon-user-solid' }
+        component: () => import('@/views/recreation/movie/index'),
+        meta: { title: '电影电视剧', icon: 'el-icon-film' }
       },
       {
         path: 'game',
         name: 'game',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '游戏', icon: 'el-icon-user-solid' }
+        meta: { title: '游戏', icon: 'el-icon-coordinate' }
       },
       {
         path: 'footprint',
         name: 'footprint',
         component: () => import('@/views/aboutme/introduction/index'),
-        meta: { title: '足迹', icon: 'el-icon-user-solid' }
+        meta: { title: '足迹', icon: 'el-icon-location-information' }
       }
     ]
   },

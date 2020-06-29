@@ -24,8 +24,8 @@ export default {
   },
   data() {
     return {
-      title: 'Vue Admin Template',
-      logo: 'https://wpimg.wallstcn.com/69a1c46c-eb1c-4b46-8bd4-e9e686ef5251.png'
+      title: 'HANXU 2018',
+      logo: 'http://q1.qlogo.cn/g?b=qq&nk=1076998404&s=640'
     }
   }
 }
@@ -46,7 +46,7 @@ export default {
   width: 100%;
   height: 50px;
   line-height: 50px;
-  background: #2b2f3a;
+  background: rgba(223, 238, 255, 0.15);
   text-align: center;
   overflow: hidden;
 
@@ -64,7 +64,7 @@ export default {
     & .sidebar-title {
       display: inline-block;
       margin: 0;
-      color: #fff;
+      color: #0f97f9;
       font-weight: 600;
       line-height: 50px;
       font-size: 14px;

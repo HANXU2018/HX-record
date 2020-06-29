@@ -1,7 +1,7 @@
 <template>
   <el-card>
     <el-row>
-      <el-col :span="7" class = "score" >
+      <el-col :span="24" class = "score" >
         <el-card >
           <div slot="header" class="clearfix">
             <span><b>成绩档案</b></span>
@@ -14,7 +14,9 @@
           </el-card>
         </el-card>
       </el-col>
-      <el-col :span="17">
+    </el-row>
+    <el-row>
+      <el-col :span="24">
         <el-card>
           <div slot="header" class="clearfix">
             <span><b>学习记录</b></span>
