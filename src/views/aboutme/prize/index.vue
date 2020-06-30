@@ -1,6 +1,6 @@
 <template>
   <el-card>
-    <el-carousel :interval="4000" type="card" height="500px">
+    <el-carousel :interval="4000" type="card" height="600px">
       <el-carousel-item v-for="(item,i) in prizes" :key="i">
         <el-alert
           title="没有获过奖"
@@ -9,15 +9,6 @@
           show-icon
         />
         <el-image :src="item.imgurl" />
-        <el-alert
-          title="没有获过奖"
-          type="warning"
-          description="我枯了 你呢？"
-          show-icon
-        />
-
-        <el-tag type="danger">标签五</el-tag>
-        <h3 class="medium">{{ item }}</h3>
       </el-carousel-item>
     </el-carousel>
   </el-card>
