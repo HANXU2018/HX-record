@@ -1,7 +1,7 @@
 <template>
   <el-card>
     <el-row>
-      <el-col :span="3" v-for="(o, index) in 100" :key="o" :offset="index > 0 ? 1 : 1">
+      <el-col v-for="(o, index) in 100" :key="o" :span="3" :offset="index > 0 ? 1 : 1">
         <el-card :body-style="{ padding: '0px' }">
           <img src="https://shadow.elemecdn.com/app/element/hamburger.9cf7b091-55e9-11e9-a976-7f4d0b07eef6.png" class="image">
           <div style="padding: 14px;">
@@ -18,9 +18,48 @@
 </template>
 
 <script>
-  export default {
-    name: 'index'
+import tcb from 'tcb-js-sdk'
+function login(e) {
+  const app = tcb.init({
+    env: 'env-jpzsehqt'
+  })// 云开发
+  app
+    .auth({
+      persistence: 'session'
+    })
+    .anonymousAuthProvider()
+    .signIn()
+    .then(() => {
+      // 登录成功
+    })
+    // eslint-disable-next-line handle-callback-err
+    .catch(err => {
+      // 登录失败
+    })
+  // 1. 获取数据库引用
+
+  app
+    .database()
+    .collection('集合').get()
+    .then(res => {
+      console.log(res.data)
+      e.currentDate = res.data
+    })
+}
+
+export default {
+  name: 'Index',
+  data() {
+    return {
+      currentDate: '123'
+    }
+  },
+  methods: {
+  },
+  mounted() {
+    login(this)
   }
+}
 </script>
 
 <style scoped>

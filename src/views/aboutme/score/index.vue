@@ -1,15 +1,16 @@
 <template>
   <el-card>
     <el-row>
-      <el-col :span="24" class = "score" >
-        <el-card >
+      <el-col :span="24" class="score">
+        <el-card>
           <div slot="header" class="clearfix">
-            <span><b>成绩档案</b></span>
+            <span ><b>成绩档案</b></span> <small>刷新</small>
+            <el-button  icon="el-icon-refresh" circle @click="refresh"></el-button>
           </div>
           <el-card v-for="course in courses">
             <el-row>
               <el-col :span="9"><span>{{ course.name }}</span></el-col>
-              <el-col :span="15"><el-progress :text-inside="true" :stroke-width="19" :percentage="course.number" :format="format" v-bind:status="statu(course.number)" /></el-col>
+              <el-col :span="15"><el-progress :text-inside="true" :stroke-width="19" :percentage="course.number" :format="format" :status="statu(course.number)" /></el-col>
             </el-row>
           </el-card>
         </el-card>
@@ -27,10 +28,11 @@
                 v-for="(activity, index) in activities"
                 :key="index"
                 :timestamp="activity.timestamp"
-                placement="top">
+                placement="top"
+              >
                 <el-card>
-                  <h4>{{activity.semester}}</h4>
-                  <p>{{activity.content}}</p>
+                  <h4>{{ activity.semester }}</h4>
+                  <p>{{ activity.content }}</p>
                 </el-card>
               </el-timeline-item>
             </el-timeline>
@@ -43,6 +45,36 @@
 </template>
 
 <script>
+
+import tcb from 'tcb-js-sdk'
+// eslint-disable-next-line no-unused-vars
+function login(e) {
+  const app = tcb.init({
+    env: 'env-jpzsehqt'
+  })// 云开发
+  app
+    .auth({
+      persistence: 'session'
+    })
+    .anonymousAuthProvider()
+    .signIn()
+    .then(() => {
+      // 登录成功
+    })
+  // eslint-disable-next-line handle-callback-err
+    .catch(err => {
+      // 登录失败
+    })
+    // 1. 获取数据库引用
+
+  app
+    .database()
+    .collection('score').get()
+    .then(res => {
+      console.log(res.data)
+      e.courses = res.data
+    })
+}
 export default {
   name: 'Index',
   data: function() {
@@ -123,7 +155,13 @@ export default {
       } else {
         return ''
       }
+    },
+    refresh() {
+      login(this)
     }
+  },
+  mounted() {
+    login(this)
   }
 }
 </script>

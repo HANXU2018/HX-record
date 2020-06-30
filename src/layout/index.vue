@@ -20,7 +20,7 @@
         color: #1989fa;
       }"
       >
-        <i class="el-icon-s-promotion"></i>
+        <i class="el-icon-s-promotion" />
       </div>
     </el-backtop>
   </div>

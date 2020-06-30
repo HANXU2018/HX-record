@@ -20,6 +20,36 @@
 <script>
 import { mapGetters } from 'vuex'
 
+import tcb from 'tcb-js-sdk'
+// eslint-disable-next-line no-unused-vars
+function login(e) {
+  const app = tcb.init({
+    env: 'env-jpzsehqt'
+  })// 云开发
+  app
+    .auth({
+      persistence: 'session'
+    })
+    .anonymousAuthProvider()
+    .signIn()
+    .then(() => {
+      // 登录成功
+    })
+    // eslint-disable-next-line handle-callback-err
+    .catch(err => {
+      // 登录失败
+    })
+  // 1. 获取数据库引用
+
+  app
+    .database()
+    .collection('DevelopmentProcess').get()
+    .then(res => {
+      console.log(res.data)
+      e.activities = res.data
+    })
+}
+
 export default {
   name: 'Dashboard',
   computed: {
@@ -41,6 +71,9 @@ export default {
         timestamp: '2020-06-28'
       }]
     }
+  },
+  mounted() {
+    login(this)
   }
 }
 </script>

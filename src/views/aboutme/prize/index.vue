@@ -1,20 +1,20 @@
 <template>
   <el-card>
     <el-carousel :interval="4000" type="card" height="500px">
-      <el-carousel-item v-for="item in 6" :key="item">
+      <el-carousel-item v-for="(item,i) in prizes" :key="i">
         <el-alert
           title="没有获过奖"
           type="warning"
           description="我枯了 你呢？"
-          show-icon>
-        </el-alert>
-        <el-image src="http://dufyun.gitee.io/images_bed/img/portfolio/11-large.jpg"></el-image>
+          show-icon
+        />
+        <el-image :src="gettempurl(item.imgurl)" />
         <el-alert
           title="没有获过奖"
           type="warning"
           description="我枯了 你呢？"
-          show-icon>
-        </el-alert>
+          show-icon
+        />
 
         <el-tag type="danger">标签五</el-tag>
         <h3 class="medium">{{ item }}</h3>
@@ -23,8 +23,74 @@
   </el-card>
 </template>
 <script>
+import tcb from 'tcb-js-sdk'
+// eslint-disable-next-line no-unused-vars
+function geturl(e, cloud, i) {
+  var tempFileURL
+  // eslint-disable-next-line no-undef
+  const app = tcb.init({
+    env: 'env-jpzsehqt'
+  })// 云开发
+  app.getTempFileURL({
+    fileList: [
+      cloud
+    ]
+  }).then((res) => {
+    // fileList 是一个有如下结构的对象数组
+    // [{
+    //    fileID: 'cloud://webtestjimmy-5328c3.7765-webtestjimmy-5328c3-1251059088/腾讯云.png', // 文件 ID
+    //    tempFileURL: '', // 临时文件网络链接
+    //    maxAge: 120 * 60 * 1000, // 有效期
+    // }]
+    console.log(res.fileList[0].tempFileURL)
+    tempFileURL = res.fileList[0].tempFileURL
+  })
+
+  return tempFileURL
+}
+
+function login(e) {
+  const app = tcb.init({
+    env: 'env-jpzsehqt'
+  })// 云开发
+  app
+    .auth({
+      persistence: 'session'
+    })
+    .anonymousAuthProvider()
+    .signIn()
+    .then(() => {
+      // 登录成功
+    })
+  // eslint-disable-next-line handle-callback-err
+    .catch(err => {
+      // 登录失败
+    })
+    // 1. 获取数据库引用
+
+  app
+    .database()
+    .collection('prize').get()
+    .then(res => {
+      console.log(res.data)
+      e.prizes = res.data
+    })
+}
 export default {
-  name: 'Index'
+  name: 'Index',
+  data() {
+    return {
+      prizes: ''
+    }
+  },
+  mounted() {
+    login(this)
+  },
+  methods: {
+    gettempurl(cloud) {
+      return geturl(cloud)
+    }
+  }
 }
 </script>
 
