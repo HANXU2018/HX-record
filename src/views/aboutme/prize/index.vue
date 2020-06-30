@@ -8,7 +8,7 @@
           description="我枯了 你呢？"
           show-icon
         />
-        <el-image :src="gettempurl(item.imgurl)" />
+        <el-image :src="item.imgurl" />
         <el-alert
           title="没有获过奖"
           type="warning"
@@ -26,27 +26,26 @@
 import tcb from 'tcb-js-sdk'
 // eslint-disable-next-line no-unused-vars
 function geturl(e, cloud, i) {
-  var tempFileURL
   // eslint-disable-next-line no-undef
   const app = tcb.init({
     env: 'env-jpzsehqt'
   })// 云开发
-  app.getTempFileURL({
-    fileList: [
-      cloud
-    ]
-  }).then((res) => {
-    // fileList 是一个有如下结构的对象数组
-    // [{
-    //    fileID: 'cloud://webtestjimmy-5328c3.7765-webtestjimmy-5328c3-1251059088/腾讯云.png', // 文件 ID
-    //    tempFileURL: '', // 临时文件网络链接
-    //    maxAge: 120 * 60 * 1000, // 有效期
-    // }]
-    console.log(res.fileList[0].tempFileURL)
-    tempFileURL = res.fileList[0].tempFileURL
+  return new Promise((reslove, reject) => {
+    app.getTempFileURL({
+      fileList: [
+        cloud
+      ]
+    }).then((res) => {
+      // fileList 是一个有如下结构的对象数组
+      // [{
+      //    fileID: 'cloud://webtestjimmy-5328c3.7765-webtestjimmy-5328c3-1251059088/腾讯云.png', // 文件 ID
+      //    tempFileURL: '', // 临时文件网络链接
+      //    maxAge: 120 * 60 * 1000, // 有效期
+      // }]
+      console.log(res.fileList[0].tempFileURL)
+      reslove(res.fileList[0].tempFileURL)
+    })
   })
-
-  return tempFileURL
 }
 
 function login(e) {
@@ -72,24 +71,27 @@ function login(e) {
     .database()
     .collection('prize').get()
     .then(res => {
-      console.log(res.data)
       e.prizes = res.data
+      e.prizes.forEach(item => {
+        geturl(e, item.imgurl)
+          .then(res => {
+            item.imgurl = res
+          })
+      })
     })
 }
 export default {
   name: 'Index',
   data() {
     return {
-      prizes: ''
+      prizes: []
     }
   },
   mounted() {
     login(this)
   },
   methods: {
-    gettempurl(cloud) {
-      return geturl(cloud)
-    }
+
   }
 }
 </script>
